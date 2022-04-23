@@ -1,18 +1,5 @@
-import ProductCard from '../components/ProductCard';
-import { Product } from '../interfaces/interfaces';
-
-const products: Product[] = [
-  {
-    id: '1',
-    img: './coffee-mug.png',
-    title: 'Coffee Mug',
-  },
-
-  {
-    id: '2',
-    title: 'Another product',
-  },
-];
+import { products } from '../data/products';
+import { ProductCard } from '../components/index';
 
 const ShoppingPage = () => {
   return (
@@ -21,7 +8,11 @@ const ShoppingPage = () => {
       <hr />
       <div style={{ display: 'flex', flexDirection: 'row', flexWrap: 'wrap' }}>
         {products.map(product => (
-          <ProductCard key={product.id} product={product} />
+          <ProductCard key={product.id} product={product}>
+            <ProductCard.Image />
+            <ProductCard.Title />
+            <ProductCard.Buttons />
+          </ProductCard>
         ))}
       </div>
     </div>
