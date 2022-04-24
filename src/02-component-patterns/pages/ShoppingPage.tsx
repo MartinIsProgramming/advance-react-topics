@@ -1,4 +1,4 @@
-import { products } from '../data/products';
+import { product, product2, products } from '../data/products';
 import { ProductCard } from '../components/index';
 import '../styles/custom-styles.css';
 
@@ -8,26 +8,41 @@ const ShoppingPage = () => {
       <h1>ShoppingPage</h1>
       <hr />
       <div style={{ display: 'flex', flexDirection: 'row', flexWrap: 'wrap' }}>
-        {products.map(product => (
+        {products.map(prod => (
           <ProductCard
-            key={product.id}
-            product={product}
-            style={{ backgroundColor: '#70D1F8' }}
+            className="bg-dark"
+            key={prod.id}
+            product={prod}
+            style={{ marginRight: '15px' }}
           >
-            <ProductCard.Image
-              className="custom-img"
-              style={{ boxShadow: '10px 10px 10px rgba(0,0,0, 0.2)' }}
-            />
+            <ProductCard.Image className="custom-img" />
             <ProductCard.Title
               className="text-white"
               style={{ fontWeight: 'bold' }}
             />
-            <ProductCard.Buttons
-              className="custom-buttons"
-              style={{ display: 'flex', justifyContent: 'center' }}
-            />
+            <ProductCard.Buttons className="custom-buttons" />
           </ProductCard>
         ))}
+      </div>
+
+      <div className="shopping-cart">
+        <ProductCard
+          className="bg-dark"
+          product={product}
+          style={{ width: '150px' }}
+        >
+          <ProductCard.Image className="custom-img" />
+          <ProductCard.Buttons className="custom-buttons" />
+        </ProductCard>
+
+        <ProductCard
+          className="bg-dark"
+          product={product2}
+          style={{ width: '150px' }}
+        >
+          <ProductCard.Image className="custom-img" />
+          <ProductCard.Buttons className="custom-buttons" />
+        </ProductCard>
       </div>
     </div>
   );
