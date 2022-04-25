@@ -5,6 +5,7 @@ import {
   NavLink,
   Navigate,
 } from 'react-router-dom';
+import RegisterPage from '../03-forms/pages/RegisterPage';
 import logo from '../logo.svg';
 
 const Navigation = () => {
@@ -17,10 +18,10 @@ const Navigation = () => {
           <ul>
             <li>
               <NavLink
-                to="/"
+                to="/register"
                 className={({ isActive }) => (isActive ? 'nav-active' : '')}
               >
-                Home
+                Register
               </NavLink>
             </li>
             <li>
@@ -31,22 +32,13 @@ const Navigation = () => {
                 About
               </NavLink>
             </li>
-            <li>
-              <NavLink
-                to="/users"
-                className={({ isActive }) => (isActive ? 'nav-active' : '')}
-              >
-                Users
-              </NavLink>
-            </li>
           </ul>
         </nav>
 
         <Routes>
-          <Route path="/" element={<h1>Home page</h1>} />
-          <Route path="/about" element={<h1>About page</h1>} />
-          <Route path="/users" element={<h1>Users page</h1>} />
-          <Route path="/*" element={<Navigate to="/" replace />} />
+          <Route path="/register" element={<RegisterPage />} />
+          <Route path="/about" element={<h1>About Page</h1>} />
+          <Route path="/*" element={<Navigate to="/register" replace />} />
         </Routes>
       </div>
     </BrowserRouter>
