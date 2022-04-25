@@ -20,3 +20,18 @@ export interface onChangeArgs {
   count: number;
   product: Product;
 }
+
+export interface InitialValues {
+  count?: number;
+  maxCount?: number;
+}
+
+export interface ProductCardHandlers {
+  count: number;
+  maxCount?: number;
+  product: Product;
+
+  isMaxReached: () => boolean;
+  increaseBy: (value: number) => void;
+  reset: () => void;
+}

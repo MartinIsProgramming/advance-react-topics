@@ -14,13 +14,28 @@ const ShoppingPage = () => {
           className="bg-dark"
           product={product}
           style={{ marginRight: '15px' }}
+          initialValues={{
+            count: 4,
+            maxCount: 10,
+          }}
         >
-          <ProductCard.Image className="custom-img" />
-          <ProductCard.Title
-            className="text-white"
-            style={{ fontWeight: 'bold' }}
-          />
-          <ProductCard.Buttons className="custom-buttons" />
+          {({ reset, increaseBy, count, isMaxReached }) => (
+            <>
+              <ProductCard.Image className="custom-img" />
+              <ProductCard.Title
+                className="text-white"
+                style={{ fontWeight: 'bold' }}
+              />
+              <ProductCard.Buttons className="custom-buttons" />
+              <button onClick={reset}> reset</button>
+              <button onClick={() => increaseBy(-2)}>-2</button>
+              {!isMaxReached() && (
+                <button onClick={() => increaseBy(+2)}>+2</button>
+              )}
+
+              <div className="text-white">{count}</div>
+            </>
+          )}
         </ProductCard>
       </div>
     </div>

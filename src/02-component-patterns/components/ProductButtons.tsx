@@ -8,7 +8,7 @@ export interface Props {
 }
 
 const ProductButtons = ({ className, style }: Props) => {
-  const { counter, increaseBy } = useContext(productContext);
+  const { counter, increaseBy, isMaxReached } = useContext(productContext);
 
   return (
     <div className={`${styles.buttonsContainer} ${className}`} style={style}>
@@ -16,7 +16,13 @@ const ProductButtons = ({ className, style }: Props) => {
         -
       </button>
       <div className={styles.countLabel}>{counter}</div>
-      <button className={styles.buttonAdd} onClick={() => increaseBy(+1)}>
+      <button
+        className={`${styles.buttonAdd} ${
+          isMaxReached && isMaxReached() && styles.disabled
+        }`}
+        onClick={() => increaseBy(+1)}
+        disabled={isMaxReached && isMaxReached()}
+      >
         +
       </button>
     </div>
